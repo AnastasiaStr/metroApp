@@ -20,7 +20,6 @@ class Station {
     var prev: Station?
     
     var annotation = MKPointAnnotation()
-    var isInWay = false
     
     init(stationName: String, stationId: Int, x: Double, y: Double, timeN: Double, timeP: Double) {
         name = stationName
@@ -28,6 +27,16 @@ class Station {
         timeToNextStation = timeN
         timeToPrevStation = timeP
         makeAnnotation(x: x, y: y)
+    }
+    
+    init(with: Station) {
+        name = with.name
+        id = with.id
+        timeToNextStation = with.timeToNextStation
+        timeToPrevStation = with.timeToPrevStation
+        next = with.next
+        prev = with.prev
+        annotation = with.annotation
     }
     
     func makeAnnotation (x: Double, y: Double){

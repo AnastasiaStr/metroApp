@@ -12,10 +12,9 @@ import UIKit
 class DataManager {
     
     private var ways: [Way] = []
-    private var newWay: [Way] = []
     private var timeForWay: Double = 0.0
     private var wayText: String = ""
-    
+    private var copyWays: [Way] = []
     
     private init() {}
     static let instance = DataManager()
@@ -24,9 +23,9 @@ class DataManager {
         return ways
     }
     
-    func getNewWay () -> [Way] {
-        return newWay
-    }
+   // func getNewWay () -> [Way] {
+      //  return newWay
+    //}
     
     func getWayText () -> String {
         return wayText
@@ -34,6 +33,7 @@ class DataManager {
     
     func readInfoFromJson () {
         
+
         let localURL = Bundle.main.url(forResource: "Kiev", withExtension: "json")
         
         let fileData: Data?
@@ -61,7 +61,9 @@ class DataManager {
                                 let timeNext = turnIntoSeconds(time:  station["timeNext"] as! Double)
                                 let timePrev = turnIntoSeconds(time: station["timePrev"] as! Double)
                                 let id = station["id"] as! Int
-                                thisLineStations.append(Station(stationName: statName, stationId: id, x: lat, y: lon, timeN: timeNext, timeP: timePrev))
+                               
+                                let stat = Station(stationName: statName, stationId: id, x: lat, y: lon, timeN: timeNext, timeP: timePrev)
+                                thisLineStations.append(stat)
                              }
                         }
                         
@@ -72,6 +74,11 @@ class DataManager {
                 print("Error deserializing JSON: \(error)")
         }
         
+        for item in ways[2].stations {
+            print ("Station: ", item.name, item.id)
+            print ("Next: ", item.next?.name)
+            print ("Prex: ", item.prev?.name)
+        }
     }
     
     func turnIntoSeconds (time: Double) -> Double {
@@ -104,17 +111,15 @@ class DataManager {
     }
     
     
-    func buildWay (from: String, to: String) {
+    func buildWay (from: String, to: String) -> [Way] {
         
-        wayText = ""
-        destroyWay()
-        newWay = []
-    
         var fromWay: Way?
         var toWay: Way?
         
         var fromStation: Station?
         var toStation: Station?
+        
+        var newWay: [Way] = []
         
         for way in ways {
             if let station = way.getStationByName(name: from) {
@@ -151,15 +156,19 @@ class DataManager {
 
                         newWay.append(Way(myStations: findPathInOneWay(fromStation: fromStation!, toStation: station1, myWay: wayFr), myName: "", myColor: color1))
                         
-                        wayText.append("Then go to \(station2.name) station to change line to the \(wayT.name). ")
+                        wayText.append("You need to go to \(station2.name) station to change line to the \(wayT.name). ")
                         
                         newWay.append(Way(myStations: findPathInOneWay(fromStation: station2, toStation: toStation!, myWay: wayT), myName: "", myColor: color2))
+                        
+                        
                         break
                         
                         }
                 }
             }
         }
+        
+
     
         wayText.append("It will take near ")
         
@@ -173,55 +182,66 @@ class DataManager {
          
         wayText.append(formattedDuration!)
         wayText.append(".")
+        
+        for item in ways[2].stations {
+            print ("Station: ", item.name, item.id)
+            print ("Next: ", item.next?.name)
+            print ("Prex: ", item.prev?.name)
+        }
 
+        
+        return newWay
         
     }
     
-    func findPathInOneWay (fromStation: Station, toStation: Station, myWay: Way) -> [Station]{
+    func findPathInOneWay (fromStation: Station, toStation: Station, myWay: Way) -> [Station] {
         let fromId = fromStation.id
         let toId = toStation.id
         var way: [Station] = []
     
-        var currentStation = fromStation
+        var currentStation = Station(with: fromStation)
         
         if fromId > toId {
             for _ in toId...fromId {
-                let station = currentStation
-                way.append(station)
+                let station = Station(with: currentStation)
+                way.append(Station(with: station))
                 timeForWay += station.timeToPrevStation
-                if let prevStat = station.prev {
-                    currentStation = prevStat
+                if var prevStat = station.prev {
+                    prevStat = Station(with: prevStat)
+                    currentStation = Station(with: prevStat)
                 }
             }
  
         } else {
             for _ in fromId...toId {
-                let station = currentStation
-                way.append(station)
+                let station = Station(with: currentStation)
+                way.append(Station(with: station))
                 timeForWay += station.timeToNextStation
-                if let nextStat = station.next {
-                    currentStation = nextStat
+                if var nextStat = station.next {
+                    nextStat = Station(with: nextStat)
+                    currentStation = Station(with: nextStat)
                 }
             }
         }
         
-        wayText.append("Go \(way.count - 1) stations to \(toStation.name) station. ")
+        if way.count > 1 {
+        
+            wayText.append("Go \(way.count - 1) stations to \(toStation.name) station. ")
+        }
+        
+
+        for item in way {
+            print (item.name)
+        }
         
         return way
     }
 
-    func makeFalse () {
-        for way in ways {
-            for station in way.stations {
-                station.isInWay = false
-            }
-        }
-    }
     
     func destroyWay() {
-        newWay = []
+     
         timeForWay =  0.0
-        makeFalse()
+        wayText = ""
     }
 
 }

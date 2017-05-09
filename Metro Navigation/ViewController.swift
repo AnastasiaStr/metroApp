@@ -19,13 +19,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var metroMap: MKMapView!
     @IBOutlet weak var wayText: UITextView!
     
-    var wayAnnotations: [MKAnnotation] = []
-    var noMoreWayAnnotations: [MKAnnotation] = []
     
     var wayPolyline: CustomPolyline?
     var waySelectingPolyline: CustomPolyline?
     
-    var polylines: [CustomPolyline] = []
     var wayPolylines: [CustomPolyline] = []
 
     override func viewDidLoad() {
@@ -65,7 +62,6 @@ class ViewController: UIViewController {
                 polyline.color = "#00000080"
                 polyline.width = 3.0
                 metroMap.add(polyline)
-                polylines.append(polyline)
             }
             
             let stations = item.stations
@@ -84,7 +80,7 @@ class ViewController: UIViewController {
             let polyline = CustomPolyline(coordinates: points, count: points.count)
             polyline.color = item.color
             metroMap.add(polyline)
-            polylines.append(polyline)
+
             
 
             
@@ -107,18 +103,15 @@ class ViewController: UIViewController {
         let toName = toTextField.text ?? ""
         let fromName = fromTextField.text ?? ""
         
-        DataManager.instance.buildWay(from: toName, to: fromName)
-        let ways = DataManager.instance.getNewWay()
+        let ways = DataManager.instance.buildWay(from: toName, to: fromName)
         
         var points: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
-        wayAnnotations = []
-    
+        print ()
         for way in ways {
             points = []
             for item in way.stations {
                 let annotation = item.annotation
                 points.append(annotation.coordinate)
-                wayAnnotations.append(annotation)
             }
 
             
@@ -170,16 +163,10 @@ class ViewController: UIViewController {
     
     func deleteOldWay () {
         DataManager.instance.destroyWay()
-        noMoreWayAnnotations.append(contentsOf: wayAnnotations)
-        metroMap.removeAnnotations(wayAnnotations)
-        
         
         for item in wayPolylines {
             metroMap.remove(item)
         }
-    
-        metroMap.addAnnotations(noMoreWayAnnotations)
-        
     }
 }
 
@@ -268,7 +255,12 @@ extension ViewController: MyTableViewDelegate {
             break
         }
         
-        if fromTextField.text != "" && toTextField.text != "" {
+        if fromTextField.text == toTextField.text {
+            wayText.text = ""
+            wayText.isHidden = false
+            deleteOldWay()
+            wayText.text.append("You are already here.")
+        } else if fromTextField.text != "" && toTextField.text != "" {
            makePath()
         }
     }
