@@ -11,16 +11,26 @@ import UIKit
 
 class DataManager {
     
-    var ways: [Way] = []
-    
-    var newWay: [Station] = []
-    var timeForWay: Double = 0.0
-    
-    var wayText: String = ""
+    private var ways: [Way] = []
+    private var newWay: [Station] = []
+    private var timeForWay: Double = 0.0
+    private var wayText: String = ""
     
     
     private init() {}
     static let instance = DataManager()
+    
+    func getWays () -> [Way] {
+        return ways
+    }
+    
+    func getNewWay () -> [Station] {
+        return newWay
+    }
+    
+    func getWayText () -> String {
+        return wayText
+    }
     
     func readInfoFromJson () {
         

@@ -27,7 +27,7 @@ class TableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for item in DataManager.instance.ways {
+        for item in DataManager.instance.getWays() {
             allOfStations.append(contentsOf: item.stations)
         }
         
@@ -38,7 +38,6 @@ class TableViewController: UIViewController {
         
         resetFilters()
         
-        // Do any additional setup after loading the view.
     }
 
     

@@ -14,14 +14,15 @@ class Way {
     var dictionaryOfStations: [String: Station] = [:]
     var name: String = ""
     var transfers: [[Station]] = []
-    var color: UIColor?
+    var color: String = ""
     
     init(myStations: [Station], myName: String, myColor: String) {
         stations.append(contentsOf: myStations)
         name = myName
+        color = myColor
         makeDictionary()
         makeLinks()
-        color = UIColor(hex: myColor)
+     
     }
     
     func makeDictionary () {

@@ -10,12 +10,6 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class CustomPolyline: MKPolyline {
-    var red: CGFloat = 0
-    var green: CGFloat = 0
-    var blue: CGFloat = 0
-    var width: CGFloat = 4.0
-}
 
 class ViewController: UIViewController, MKMapViewDelegate {
 
@@ -26,7 +20,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var wayText: UITextView!
     
 
-    var annotations: [MKAnnotation] = []
+    //var annotations: [MKAnnotation] = []
     var wayAnnotations: [MKAnnotation] = []
     var noMoreWayAnnotations: [MKAnnotation] = []
     var wayPolyline: CustomPolyline?
@@ -62,45 +56,24 @@ class ViewController: UIViewController, MKMapViewDelegate {
 
     
     func showStations () {
-        for item in DataManager.instance.ways {
+        
+     
+        for item in DataManager.instance.getWays() {
+            var points: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
             for station in item.stations {
                 
                 let annotation = station.annotation
-                annotations.append(annotation)
+                points.append(annotation.coordinate)
+                let polyline = CustomPolyline(coordinates: points, count: points.count)
+                polyline.color = item.color
+                metroMap.add(polyline)
                 metroMap.addAnnotation(annotation)
             }
 
         }
         
-        var points: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
         
-        for i in 0...15 {
-            points.append(annotations[i].coordinate)
-        }
-        var polyline = CustomPolyline(coordinates: points, count: points.count)
-        polyline.green = 1
-        metroMap.add(polyline)
-        
-        points = []
-        for i in 16...33 {
-            points.append(annotations[i].coordinate)
-        }
-        
-        polyline = CustomPolyline(coordinates: points, count: points.count)
-        polyline.blue = 1
-
-       
-        metroMap.add(polyline)
-        
-        points = []
-        for i in 34...51 {
-            points.append(annotations[i].coordinate)
-        }
-        
-        polyline = CustomPolyline(coordinates: points, count: points.count)
-        polyline.red = 1
-        metroMap.add(polyline)
-        
+        /*
         points = [annotations[12].coordinate, annotations[43].coordinate]
         polyline = CustomPolyline(coordinates: points, count: points.count)
         metroMap.add(polyline)
@@ -111,7 +84,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
         points = [annotations[11].coordinate, annotations[25].coordinate]
         polyline = CustomPolyline(coordinates: points, count: points.count)
-        metroMap.add(polyline)
+        metroMap.add(polyline)*/
         
     }
     
@@ -120,7 +93,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         if overlay is CustomPolyline {
             let myLine: CustomPolyline = overlay as! CustomPolyline
             let renderer1 = MKPolylineRenderer(overlay: overlay)
-            renderer1.strokeColor = UIColor(red: myLine.red, green: myLine.green, blue: myLine.blue, alpha: 1)
+            renderer1.strokeColor = UIColor(hex: myLine.color)
             renderer1.lineWidth = myLine.width
         
             return renderer1
@@ -155,7 +128,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         if let annotationView = annotationView {
             annotationView.canShowCallout = true
             
-            for way in DataManager.instance.ways {
+            for way in DataManager.instance.getWays() {
                 if let title = annotation.title as? String {
                     if let station = way.getStationByName(name: title) {
                         if station.isInWay == true {
@@ -180,7 +153,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         let fromName = fromTextField.text ?? ""
         
         DataManager.instance.buildWay(from: toName, to: fromName)
-        let way = DataManager.instance.newWay
+        let way = DataManager.instance.getNewWay()
         
         var points: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
         wayAnnotations = []
@@ -190,8 +163,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         }
         
         wayPolyline = CustomPolyline(coordinates: points, count: points.count)
-        wayPolyline?.red = 1
-        wayPolyline?.green = 1
+        wayPolyline?.color = "ffff00"
         wayPolyline?.width = 5.0
         if let polyline = wayPolyline {
             metroMap.add(polyline)
@@ -201,7 +173,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         metroMap.addAnnotations(wayAnnotations)
         
         wayText.text = ""
-        wayText.text.append(DataManager.instance.wayText)
+        wayText.text.append(DataManager.instance.getWayText())
 
 
         metroMap.reloadInputViews()
@@ -263,6 +235,13 @@ extension ViewController: MyTableViewDelegate {
         }
     }
 }
+
+class CustomPolyline: MKPolyline {
+    
+    var color = "000000"
+    var width: CGFloat = 4.0
+}
+
 
 
 
