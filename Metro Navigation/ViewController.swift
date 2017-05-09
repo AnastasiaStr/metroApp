@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 
 
-class ViewController: UIViewController, MKMapViewDelegate {
+class ViewController: UIViewController {
 
     @IBOutlet weak var toTextField: UITextField!
     @IBOutlet weak var fromTextField: UITextField!
@@ -19,31 +19,28 @@ class ViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var metroMap: MKMapView!
     @IBOutlet weak var wayText: UITextView!
     
-
-    //var annotations: [MKAnnotation] = []
     var wayAnnotations: [MKAnnotation] = []
     var noMoreWayAnnotations: [MKAnnotation] = []
+    
     var wayPolyline: CustomPolyline?
-  
-    var lastGoodMapRect: MKMapRect?
-    var manuallyChangingMapRect: Bool = false
-    var mapOverlay: MKOverlay?
-
+    var waySelectingPolyline: CustomPolyline?
+    
+    var polylines: [CustomPolyline] = []
+    var wayPolylines: [CustomPolyline] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         toTextField.delegate = self
         fromTextField.delegate = self
-        DataManager.instance.alternativeInit()
-        
-        wayText.isHidden = true
         metroMap.delegate = self
         
+        DataManager.instance.initWays()
+        
+        wayText.isHidden = true
         wayText.layer.cornerRadius = 4.0
         
         fromTextField.tag = 0
         toTextField.tag = 1
-        
         
         showStations()
         
@@ -56,53 +53,146 @@ class ViewController: UIViewController, MKMapViewDelegate {
 
     
     func showStations () {
-        
-     
         for item in DataManager.instance.getWays() {
+            
+            for transfer in item.transfers {
+                var crossingPoints: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
+                for station in transfer {
+                    let annotation = station.annotation
+                    crossingPoints.append(annotation.coordinate)
+                }
+                let polyline = CustomPolyline(coordinates: crossingPoints, count: crossingPoints.count)
+                polyline.color = "#00000080"
+                polyline.width = 3.0
+                metroMap.add(polyline)
+                polylines.append(polyline)
+            }
+            
+            let stations = item.stations
             var points: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
-            for station in item.stations {
-                
+
+            
+            for station in stations {
+
                 let annotation = station.annotation
                 points.append(annotation.coordinate)
-                let polyline = CustomPolyline(coordinates: points, count: points.count)
-                polyline.color = item.color
-                metroMap.add(polyline)
                 metroMap.addAnnotation(annotation)
+                
+                
             }
+            
+            let polyline = CustomPolyline(coordinates: points, count: points.count)
+            polyline.color = item.color
+            metroMap.add(polyline)
+            polylines.append(polyline)
+            
 
+            
+            for coordinate in points {
+                var coordinates: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
+                coordinates.append(coordinate)
+                let pol = CustomPolyline(coordinates: coordinates, count: coordinates.count)
+                pol.width = 10.0
+                pol.color = item.color
+                metroMap.add(pol)
+            }
         }
-        
-        
-        /*
-        points = [annotations[12].coordinate, annotations[43].coordinate]
-        polyline = CustomPolyline(coordinates: points, count: points.count)
-        metroMap.add(polyline)
-        
-        points = [annotations[26].coordinate, annotations[44].coordinate]
-        polyline = CustomPolyline(coordinates: points, count: points.count)
-        metroMap.add(polyline)
-        
-        points = [annotations[11].coordinate, annotations[25].coordinate]
-        polyline = CustomPolyline(coordinates: points, count: points.count)
-        metroMap.add(polyline)*/
-        
     }
     
+
+    func makePath () {
+        
+        deleteOldWay()
+        
+        let toName = toTextField.text ?? ""
+        let fromName = fromTextField.text ?? ""
+        
+        DataManager.instance.buildWay(from: toName, to: fromName)
+        let ways = DataManager.instance.getNewWay()
+        
+        var points: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
+        wayAnnotations = []
+    
+        for way in ways {
+            points = []
+            for item in way.stations {
+                let annotation = item.annotation
+                points.append(annotation.coordinate)
+                wayAnnotations.append(annotation)
+            }
+
+            
+            waySelectingPolyline = CustomPolyline(coordinates: points, count: points.count)
+            waySelectingPolyline?.color = "#000000ff"
+            waySelectingPolyline?.width = 8.0
+            if let polyline = waySelectingPolyline {
+                metroMap.add(polyline)
+                wayPolylines.append(polyline)
+            }
+            
+            for coordinate in points {
+                var coordinates: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
+                coordinates.append(coordinate)
+                let polBlack = CustomPolyline(coordinates: coordinates, count: coordinates.count)
+                polBlack.width = 13.0
+                polBlack.color = "#000000ff"
+                metroMap.add(polBlack)
+                wayPolylines.append(polBlack)
+                
+                let polColor = CustomPolyline(coordinates: coordinates, count: coordinates.count)
+                polColor.width = 10.0
+                polColor.color = way.color
+                metroMap.add(polColor)
+                wayPolylines.append(polColor)
+                
+            }
+            
+            wayPolyline = CustomPolyline(coordinates: points, count: points.count)
+            wayPolyline?.color = way.color
+            wayPolyline?.width = 4.0
+            if let polyline = wayPolyline {
+                metroMap.add(polyline)
+                wayPolylines.append(polyline)
+            }
+        
+        }
+        
+
+        wayText.text = ""
+        wayText.text.append(DataManager.instance.getWayText())
+
+
+        metroMap.reloadInputViews()
+        wayText.isHidden = false
+
+    }
+
+    
+    func deleteOldWay () {
+        DataManager.instance.destroyWay()
+        noMoreWayAnnotations.append(contentsOf: wayAnnotations)
+        metroMap.removeAnnotations(wayAnnotations)
+        
+        
+        for item in wayPolylines {
+            metroMap.remove(item)
+        }
+    
+        metroMap.addAnnotations(noMoreWayAnnotations)
+        
+    }
+}
+
+extension ViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if overlay is CustomPolyline {
             let myLine: CustomPolyline = overlay as! CustomPolyline
             let renderer1 = MKPolylineRenderer(overlay: overlay)
-            renderer1.strokeColor = UIColor(hex: myLine.color)
+            renderer1.strokeColor = UIColor(hexString: myLine.color)
             renderer1.lineWidth = myLine.width
-        
+            
             return renderer1
-        } else if overlay is MKPolygon {
-            let renderer = MKPolygonRenderer(polygon: overlay as! MKPolygon)
-            renderer.fillColor = UIColor.black.withAlphaComponent(1)
-            renderer.strokeColor = UIColor.orange
-            renderer.lineWidth = 2
-            return renderer
         }
         
         return MKOverlayRenderer()
@@ -130,67 +220,15 @@ class ViewController: UIViewController, MKMapViewDelegate {
             
             for way in DataManager.instance.getWays() {
                 if let title = annotation.title as? String {
-                    if let station = way.getStationByName(name: title) {
-                        if station.isInWay == true {
-                            annotationView.image = UIImage(named: "yellow")
-                        } else {
-                            annotationView.image = UIImage(named: way.name)
-                        }
+                    if way.getStationByName(name: title) != nil {
+                        let image = UIImage(named: way.name)?.alpha(0)
+                        annotationView.image = image
                     }
                 }
             }
         }
         
         return annotationView
-    }
-
-    
-    func makePath () {
-        
-        deleteOldWay()
-        
-        let toName = toTextField.text ?? ""
-        let fromName = fromTextField.text ?? ""
-        
-        DataManager.instance.buildWay(from: toName, to: fromName)
-        let way = DataManager.instance.getNewWay()
-        
-        var points: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
-        wayAnnotations = []
-        for item in way {
-            points.append(item.annotation.coordinate)
-            wayAnnotations.append(item.annotation)
-        }
-        
-        wayPolyline = CustomPolyline(coordinates: points, count: points.count)
-        wayPolyline?.color = "ffff00"
-        wayPolyline?.width = 5.0
-        if let polyline = wayPolyline {
-            metroMap.add(polyline)
-        }
-        
-        metroMap.removeAnnotations(wayAnnotations)
-        metroMap.addAnnotations(wayAnnotations)
-        
-        wayText.text = ""
-        wayText.text.append(DataManager.instance.getWayText())
-
-
-        metroMap.reloadInputViews()
-        wayText.isHidden = false
-
-    }
-
-    
-    func deleteOldWay () {
-        DataManager.instance.destroyWay()
-        noMoreWayAnnotations.append(contentsOf: wayAnnotations)
-        metroMap.removeAnnotations(wayAnnotations)
-        if let polyline = wayPolyline {
-            metroMap.remove(polyline)
-        }
-        metroMap.addAnnotations(noMoreWayAnnotations)
-        
     }
 }
 
@@ -238,7 +276,7 @@ extension ViewController: MyTableViewDelegate {
 
 class CustomPolyline: MKPolyline {
     
-    var color = "000000"
+    var color = "#00000030"
     var width: CGFloat = 4.0
 }
 

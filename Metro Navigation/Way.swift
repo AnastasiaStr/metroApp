@@ -34,9 +34,11 @@ class Way {
     func makeLinks () {
         stations[0].next = stations[1]
         stations[stations.count - 1].prev = stations[stations.count - 2]
-        for i in 1...stations.count - 2 {
-            stations[i].prev = stations[i - 1]
-            stations[i].next = stations[i + 1]
+        if stations.count > 2 {
+            for i in 1...stations.count - 2 {
+                stations[i].prev = stations[i - 1]
+                stations[i].next = stations[i + 1]
+            }
         }
     }
     

@@ -35,6 +35,7 @@ class TableViewController: UIViewController {
         tableView.dataSource = self
         
         textField.delegate = self
+        textField.placeholder = "Start typing station name"
         
         resetFilters()
         
@@ -48,7 +49,7 @@ class TableViewController: UIViewController {
     }
     
     fileprivate func pushData(_ data: String, to tag: Int) {
-            delegate?.setData(data, to: tag)
+        delegate?.setData(data, to: tag)
     }
 
 }

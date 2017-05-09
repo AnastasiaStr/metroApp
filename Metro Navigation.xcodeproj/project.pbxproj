@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D1615D01EC21B1D00E234C7 /* UIImage + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1615CF1EC21B1D00E234C7 /* UIImage + extension.swift */; };
 		5D2494811EC07768000C5EFF /* Kiev.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D2494801EC07768000C5EFF /* Kiev.json */; };
 		5D2494831EC08704000C5EFF /* UIColor + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2494821EC08704000C5EFF /* UIColor + extension.swift */; };
 		5D3D867A1EB7C3F800166005 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3D86791EB7C3F800166005 /* AppDelegate.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5D1615CF1EC21B1D00E234C7 /* UIImage + extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage + extension.swift"; sourceTree = "<group>"; };
 		5D2494801EC07768000C5EFF /* Kiev.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Kiev.json; sourceTree = "<group>"; };
 		5D2494821EC08704000C5EFF /* UIColor + extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor + extension.swift"; sourceTree = "<group>"; };
 		5D3D86761EB7C3F800166005 /* Metro Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Metro Navigation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				5D2494821EC08704000C5EFF /* UIColor + extension.swift */,
+				5D1615CF1EC21B1D00E234C7 /* UIImage + extension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				C8BC38241EBE393200C03CB2 /* TableViewController.swift in Sources */,
 				5D3D867C1EB7C3F800166005 /* ViewController.swift in Sources */,
 				5D90AAA61EB7D22500E0B063 /* DataManager.swift in Sources */,
+				5D1615D01EC21B1D00E234C7 /* UIImage + extension.swift in Sources */,
 				5D6A845A1EBF663C00D479EB /* Way.swift in Sources */,
 				5D2494831EC08704000C5EFF /* UIColor + extension.swift in Sources */,
 				5D90AAA81EB7D33500E0B063 /* Station.swift in Sources */,

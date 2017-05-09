@@ -1,5 +1,5 @@
 { "lines": [{
-                  "color": "00ff00",
+                  "color": "#00b926ff",
                   "name": "green",
                   "stations": [{
                                "id": 0,
@@ -149,7 +149,7 @@
                   },
                   
                   {
-                  "color": "0000ff",
+                  "color": "#3084d3ff",
                   "name": "blue",
                   "stations": [{
                                "id": 16,
@@ -316,7 +316,7 @@
                   },
                   
                   {
-                  "color": "ff0000",
+                  "color": "#ee0000ff",
                   "name": "red",
                   "stations": [{
                                "id": 34,
