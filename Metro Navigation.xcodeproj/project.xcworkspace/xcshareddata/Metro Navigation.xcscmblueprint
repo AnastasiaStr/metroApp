@@ -1,21 +1,28 @@
 {
-  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "E7CCBE19CF5C2951816F42C2DD8A41CAB47DD311",
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "58B473F90869CB4A5105BACA2942DF3CF97D0E41",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
     "E7CCBE19CF5C2951816F42C2DD8A41CAB47DD311" : 9223372036854775807,
+    "58B473F90869CB4A5105BACA2942DF3CF97D0E41" : 9223372036854775807,
     "87EC6F26E89E196E674952B7DA47CE5CECBFD156" : 9223372036854775807
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "682A0BB9-2484-43AD-84D7-73834FA01822",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "E7CCBE19CF5C2951816F42C2DD8A41CAB47DD311" : "Metro%20Navigation\/",
+    "58B473F90869CB4A5105BACA2942DF3CF97D0E41" : "metroApp\/",
     "87EC6F26E89E196E674952B7DA47CE5CECBFD156" : ""
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "Metro Navigation",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
   "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Metro Navigation.xcodeproj",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/AnastasiaStr\/metroApp",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "58B473F90869CB4A5105BACA2942DF3CF97D0E41"
+    },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/AnastasiaStr\/metroRawApp",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",

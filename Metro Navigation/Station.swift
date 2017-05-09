@@ -22,7 +22,7 @@ class Station {
     var annotation = MKPointAnnotation()
     var isInWay = false
     
-    init(stationName: String = "Kek", stationId: Int = -1, x: Double = 0.0, y: Double = 0.0, timeN: Double = 0.0, timeP: Double = 0.0) {
+    init(stationName: String, stationId: Int, x: Double, y: Double, timeN: Double, timeP: Double) {
         name = stationName
         id = stationId
         timeToNextStation = timeN

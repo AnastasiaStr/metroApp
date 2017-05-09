@@ -10,10 +10,6 @@ import Foundation
 import UIKit
 
 class DataManager {
-
-   // var greenWay: Way?
-    //var blueWay: Way?
-    //var redWay: Way?
     
     var ways: [Way] = []
     
@@ -97,9 +93,6 @@ class DataManager {
         
     }
     
-    func initTimeToStations () {
-        
-    }
     
     func buildWay (from: String, to: String) {
         
@@ -183,7 +176,7 @@ class DataManager {
         var currentStation = fromStation
         
         if fromId > toId {
-            for i in toId...fromId {
+            for _ in toId...fromId {
                 let station = currentStation
                 way.append(station)
                 timeForWay += station.timeToPrevStation
@@ -193,7 +186,7 @@ class DataManager {
             }
  
         } else {
-            for i in fromId...toId {
+            for _ in fromId...toId {
                 let station = currentStation
                 way.append(station)
                 timeForWay += station.timeToNextStation

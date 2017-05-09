@@ -17,7 +17,6 @@ class CustomPolyline: MKPolyline {
     var width: CGFloat = 4.0
 }
 
-
 class ViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var toTextField: UITextField!
