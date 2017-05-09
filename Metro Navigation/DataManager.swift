@@ -74,11 +74,6 @@ class DataManager {
                 print("Error deserializing JSON: \(error)")
         }
         
-        for item in ways[2].stations {
-            print ("Station: ", item.name, item.id)
-            print ("Next: ", item.next?.name)
-            print ("Prex: ", item.prev?.name)
-        }
     }
     
     func turnIntoSeconds (time: Double) -> Double {
@@ -183,11 +178,7 @@ class DataManager {
         wayText.append(formattedDuration!)
         wayText.append(".")
         
-        for item in ways[2].stations {
-            print ("Station: ", item.name, item.id)
-            print ("Next: ", item.next?.name)
-            print ("Prex: ", item.prev?.name)
-        }
+
 
         
         return newWay
@@ -225,14 +216,12 @@ class DataManager {
         }
         
         if way.count > 1 {
-        
-            wayText.append("Go \(way.count - 1) stations to \(toStation.name) station. ")
+            
+
+          
         }
         
 
-        for item in way {
-            print (item.name)
-        }
         
         return way
     }

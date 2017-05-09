@@ -95,6 +95,30 @@ class ViewController: UIViewController {
         }
     }
     
+    func setTextOfWay (ways: [Way]) {
+        wayText.text = ""
+        var textOfWay: NSMutableAttributedString?
+        textOfWay = NSMutableAttributedString(string: "Ride \(ways[0].stations.count - 1) stations to ", attributes: [:])
+        
+        let nameOfStation = Utils.getAttributedText(inputText: "\(ways[0].stations[ways[0].stations.count - 1].name) station. ", location: 0, length: ways[0].stations[ways[0].stations.count - 1].name.characters.count, color: UIColor(hexString: ways[0].color)!)
+        
+        textOfWay?.append(nameOfStation)
+        
+        if ways.count == 1 {
+            let addText = NSMutableAttributedString(string: "You do not need to change the train. ", attributes: [:])
+            textOfWay?.append(addText)
+        } else {
+            var addText = NSMutableAttributedString(string: "Then cross to ", attributes: [:])
+            textOfWay?.append(addText)
+            addText = Utils.getAttributedText(inputText: "\(ways[1].stations[0].name) station to change line and ride \(ways[1].stations.count) stations ", location: 0, length: ways[1].stations[0].name.characters.count, color: UIColor(hexString: ways[1].color)!)
+            textOfWay?.append(addText)
+            
+            addText = Utils.getAttributedText(inputText: "\(ways[1].stations[ways[1].stations.count - 1].name) station. ", location: 0, length: ways[1].stations[ways[1].stations.count - 1].name.characters.count, color: UIColor(hexString: ways[1].color)!)
+            textOfWay?.append(addText)
+        }
+        wayText.attributedText = textOfWay
+    }
+    
 
     func makePath () {
         
@@ -105,15 +129,20 @@ class ViewController: UIViewController {
         
         let ways = DataManager.instance.buildWay(from: toName, to: fromName)
         
+        
         var points: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
-        print ()
+
+        
+        
+        
+        
         for way in ways {
             points = []
             for item in way.stations {
                 let annotation = item.annotation
                 points.append(annotation.coordinate)
-            }
 
+            }
             
             waySelectingPolyline = CustomPolyline(coordinates: points, count: points.count)
             waySelectingPolyline?.color = "#000000ff"
@@ -151,10 +180,7 @@ class ViewController: UIViewController {
         }
         
 
-        wayText.text = ""
-        wayText.text.append(DataManager.instance.getWayText())
-
-
+        setTextOfWay(ways: ways)
         metroMap.reloadInputViews()
         wayText.isHidden = false
 
