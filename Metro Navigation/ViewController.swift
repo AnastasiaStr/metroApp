@@ -116,6 +116,10 @@ class ViewController: UIViewController {
             addText = Utils.getAttributedText(inputText: "\(ways[1].stations[ways[1].stations.count - 1].name) station. ", location: 0, length: ways[1].stations[ways[1].stations.count - 1].name.characters.count, color: UIColor(hexString: ways[1].color)!)
             textOfWay?.append(addText)
         }
+        
+        let timeText = NSMutableAttributedString(string: "It will take near \(DataManager.instance.getTime()) minutes. ", attributes: [:])
+        
+        textOfWay?.append(timeText)
         wayText.attributedText = textOfWay
     }
     
@@ -129,13 +133,8 @@ class ViewController: UIViewController {
         
         let ways = DataManager.instance.buildWay(from: toName, to: fromName)
         
-        
         var points: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
 
-        
-        
-        
-        
         for way in ways {
             points = []
             for item in way.stations {

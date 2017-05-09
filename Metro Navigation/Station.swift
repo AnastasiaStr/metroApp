@@ -13,15 +13,15 @@ class Station {
     var id: Int = 0
     var name: String = ""
 
-    var timeToNextStation: Double = 0.0
-    var timeToPrevStation: Double = 0.0
+    var timeToNextStation: Int = 0
+    var timeToPrevStation: Int = 0
     
     var next: Station?
     var prev: Station?
     
     var annotation = MKPointAnnotation()
     
-    init(stationName: String, stationId: Int, x: Double, y: Double, timeN: Double, timeP: Double) {
+    init(stationName: String, stationId: Int, x: Double, y: Double, timeN: Int, timeP: Int) {
         name = stationName
         id = stationId
         timeToNextStation = timeN

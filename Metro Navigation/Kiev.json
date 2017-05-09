@@ -6,8 +6,8 @@
                                "name": "Chervonyi khutir",
                                "lat": 50.409500,
                                "lon": 30.696181,
-                               "timePrev": -1.0,
-                               "timeNext": 1.3
+                               "timePrev": -1,
+                               "timeNext": 2
                                },
                                
                                {
@@ -15,8 +15,8 @@
                                "name": "Boryspilska",
                                "lat": 50.403387,
                                "lon": 30.684186,
-                               "timePrev": 1.3,
-                               "timeNext": 2.0
+                               "timePrev": 2,
+                               "timeNext": 2
                                },
                                
                                {
@@ -24,8 +24,8 @@
                                "name": "Vyrlytsia",
                                "lat": 50.403111,
                                "lon": 30.666897,
-                               "timePrev": 2.0,
-                               "timeNext": 2.0
+                               "timePrev": 2,
+                               "timeNext": 2
                                },
                                
                                {
@@ -33,8 +33,8 @@
                                "name": "Kharkivksa",
                                "lat": 50.400724,
                                "lon": 30.652477,
-                               "timePrev": 2.0,
-                               "timeNext": 1.5
+                               "timePrev": 2,
+                               "timeNext": 2
                                },
                                
                                {
@@ -42,8 +42,8 @@
                                "name": "Pozniaky",
                                "lat": 50.397946,
                                "lon": 30.634562,
-                               "timePrev": 1.5,
-                               "timeNext": 2.0
+                               "timePrev": 2,
+                               "timeNext": 2
                                },
                                
                                {
@@ -51,8 +51,8 @@
                                "name": "Osokorky",
                                "lat": 50.395269,
                                "lon": 30.616162,
-                               "timePrev": 2.0,
-                               "timeNext": 1.15
+                               "timePrev": 2,
+                               "timeNext": 1
                                },
                                
                                {
@@ -60,8 +60,8 @@
                                "name": "Slavutych",
                                "lat": 50.394277,
                                "lon": 30.604843,
-                               "timePrev": 1.15,
-                               "timeNext": 4.5
+                               "timePrev": 1,
+                               "timeNext": 5
                                },
                                
                                {
@@ -69,8 +69,8 @@
                                "name": "Vydubychi",
                                "lat": 50.402108,
                                "lon": 30.560157,
-                               "timePrev": 4.5,
-                               "timeNext": 2.15
+                               "timePrev": 5,
+                               "timeNext": 2
                                },
                                
                                {
@@ -78,8 +78,8 @@
                                "name": "Druzhby narodiv",
                                "lat": 50.416822,
                                "lon": 30.546918,
-                               "timePrev": 2.15,
-                               "timeNext": 1.3
+                               "timePrev": 2,
+                               "timeNext": 1
                                },
                                
                                {
@@ -87,8 +87,8 @@
                                "name": "Pecherska",
                                "lat": 50.426488,
                                "lon": 30.540137,
-                               "timePrev": 1.2,
-                               "timeNext": 1.45
+                               "timePrev": 1,
+                               "timeNext": 2
                                },
                                
                                {
@@ -96,8 +96,8 @@
                                "name": "Klovska",
                                "lat": 50.435892,
                                "lon": 30.533410,
-                               "timePrev": 1.45,
-                               "timeNext": 1.3
+                               "timePrev": 2,
+                               "timeNext": 2
                                },
                                
                                {
@@ -105,8 +105,8 @@
                                "name": "Palats sportu",
                                "lat": 50.439620,
                                "lon": 30.519467,
-                               "timePrev": 1.3,
-                               "timeNext": 1.15
+                               "timePrev": 2,
+                               "timeNext": 1
                                },
                                
                                {
@@ -114,8 +114,8 @@
                                "name": "Zoloti vorota",
                                "lat": 50.448447,
                                "lon": 30.513472,
-                               "timePrev": 1.15,
-                               "timeNext": 4.3
+                               "timePrev": 1,
+                               "timeNext": 5
                                },
                                
                                {
@@ -123,8 +123,8 @@
                                "name": "Lukianivska",
                                "lat": 50.461183,
                                "lon": 30.483699,
-                               "timePrev": 4.3,
-                               "timeNext": 3.2
+                               "timePrev": 5,
+                               "timeNext": 3
                                },
                                
                                {
@@ -132,8 +132,8 @@
                                "name": "Dorohozhychi",
                                "lat": 50.473120,
                                "lon": 30.452253,
-                               "timePrev": 3.2,
-                               "timeNext": 2.0
+                               "timePrev": 3,
+                               "timeNext": 2
                                },
                                
                                {
@@ -141,8 +141,8 @@
                                "name": "Syrets",
                                "lat": 50.476213,
                                "lon": 30.430677,
-                               "timePrev": 2.0,
-                               "timeNext": -1.0
+                               "timePrev": 2,
+                               "timeNext": -1
                                }
                                
                                ]
@@ -156,8 +156,8 @@
                                "name": "Teremky",
                                "lat": 50.367174,
                                "lon": 30.454398,
-                               "timePrev": -1.0,
-                               "timeNext": 2.0
+                               "timePrev": -1,
+                               "timeNext": 2
                                },
                                
                                {
@@ -165,8 +165,8 @@
                                "name": "Ipodrom",
                                "lat": 50.376672,
                                "lon": 30.469000,
-                               "timePrev": 2.0,
-                               "timeNext": 4.0
+                               "timePrev": 2,
+                               "timeNext": 4
                                },
                                
                                {
@@ -174,8 +174,8 @@
                                "name": "Vystavkovyj tsentr",
                                "lat": 50.382405,
                                "lon": 30.477690,
-                               "timePrev": 4.0,
-                               "timeNext": 3.0
+                               "timePrev": 4,
+                               "timeNext": 3
                                },
                                
                                {
@@ -183,8 +183,8 @@
                                "name": "Vasylkivska",
                                "lat": 50.393254,
                                "lon": 30.487657,
-                               "timePrev": 3.0,
-                               "timeNext": 2.0
+                               "timePrev": 3,
+                               "timeNext": 2
                                },
                                
                                {
@@ -192,8 +192,8 @@
                                "name": "Holosiivska",
                                "lat": 50.397460,
                                "lon": 30.508356,
-                               "timePrev": 2.0,
-                               "timeNext": 1.0
+                               "timePrev": 2,
+                               "timeNext": 1
                                },
                                
                                {
@@ -201,8 +201,8 @@
                                "name": "Demiivska",
                                "lat": 50.404794,
                                "lon": 30.516864,
-                               "timePrev": 1.0,
-                               "timeNext": 2.0
+                               "timePrev": 1,
+                               "timeNext": 2
                                },
                                
                                {
@@ -210,8 +210,8 @@
                                "name": "Lybidska",
                                "lat": 50.414435,
                                "lon": 30.524878,
-                               "timePrev": 2.0,
-                               "timeNext": 1.3
+                               "timePrev": 2,
+                               "timeNext": 2
                                },
                                
                                {
@@ -219,8 +219,8 @@
                                "name": "Palats Ukraina",
                                "lat": 50.421193,
                                "lon": 30.520613,
-                               "timePrev": 1.3,
-                               "timeNext": 1.45
+                               "timePrev": 2,
+                               "timeNext": 2
                                },
                                
                                {
@@ -228,8 +228,8 @@
                                "name": "Olimpiiska",
                                "lat": 50.432167,
                                "lon": 30.515849,
-                               "timePrev": 1.45,
-                               "timeNext": 1.4
+                               "timePrev": 2,
+                               "timeNext": 2
                                },
                                
                                {
@@ -237,8 +237,8 @@
                                "name": "Lva Tolstogo Square",
                                "lat": 50.440070,
                                "lon": 30.518022,
-                               "timePrev": 1.4,
-                               "timeNext": 1.3
+                               "timePrev": 2,
+                               "timeNext": 2
                                },
                                
                                {
@@ -246,8 +246,8 @@
                                "name": "Maidan Nezalaznosti",
                                "lat": 50.447968,
                                "lon": 30.525269,
-                               "timePrev": 1.3,
-                               "timeNext": 2.0
+                               "timePrev": 2,
+                               "timeNext": 2
                                },
                                
                                {
@@ -255,8 +255,8 @@
                                "name": "Poshtova plosha",
                                "lat": 50.458959,
                                "lon": 30.524765,
-                               "timePrev": 2.0,
-                               "timeNext": 2.15
+                               "timePrev": 2,
+                               "timeNext": 2
                                },
                                
                                {
@@ -264,8 +264,8 @@
                                "name": "Kontraktova plosha",
                                "lat": 50.466041,
                                "lon": 30.515002,
-                               "timePrev": 2.15,
-                               "timeNext": 1.3
+                               "timePrev": 2,
+                               "timeNext": 2
                                },
                                
                                {
@@ -273,8 +273,8 @@
                                "name": "Tarasa Shevchenka",
                                "lat": 50.474147,
                                "lon": 30.503485,
-                               "timePrev": 1.3,
-                               "timeNext": 2.3
+                               "timePrev": 2,
+                               "timeNext": 3
                                },
                                
                                {
@@ -282,8 +282,8 @@
                                "name": "Petrivka",
                                "lat": 50.486078,
                                "lon": 30.497847,
-                               "timePrev": 2.3,
-                               "timeNext": 2.15
+                               "timePrev": 3,
+                               "timeNext": 2
                                },
                                
                                {
@@ -291,8 +291,8 @@
                                "name": "Obolon",
                                "lat": 50.501466,
                                "lon": 30.498217,
-                               "timePrev": 2.15,
-                               "timeNext": 1.4
+                               "timePrev": 2,
+                               "timeNext": 2
                                },
                                
                                {
@@ -300,8 +300,8 @@
                                "name": "Minska",
                                "lat": 50.512240,
                                "lon": 30.498550,
-                               "timePrev": 1.4,
-                               "timeNext": 2.0
+                               "timePrev": 2,
+                               "timeNext": 2
                                },
                                
                                {
@@ -309,8 +309,8 @@
                                "name": "Heroiv Dnipra",
                                "lat": 50.522735,
                                "lon": 30.498963,
-                               "timePrev": 2.0,
-                               "timeNext": -1.0
+                               "timePrev": 2,
+                               "timeNext": -1
                                }
                                ]
                   },
@@ -323,8 +323,8 @@
                                "name": "Akademmistechko",
                                "lat": 50.464915,
                                "lon": 30.355283,
-                               "timePrev": -1.0,
-                               "timeNext": 2.1
+                               "timePrev": -1,
+                               "timeNext": 2
                                },
                                
                                {
@@ -332,8 +332,8 @@
                                "name": "Zhytomyrska",
                                "lat": 50.456104,
                                "lon": 30.364982,
-                               "timePrev": 2.1,
-                               "timeNext": 2.4
+                               "timePrev": 2,
+                               "timeNext": 3
                                },
                                
                                {
@@ -341,8 +341,8 @@
                                "name": "Sviatoshyn",
                                "lat": 50.457764,
                                "lon": 30.390592,
-                               "timePrev": 2.4,
-                               "timeNext": 1.2
+                               "timePrev": 3,
+                               "timeNext": 1
                                },
                                
                                {
@@ -350,8 +350,8 @@
                                "name": "Nyvky",
                                "lat": 50.458638,
                                "lon": 30.403906,
-                               "timePrev": 1.2,
-                               "timeNext": 1.4
+                               "timePrev": 1,
+                               "timeNext": 2
                                },
                                
                                {
@@ -359,8 +359,8 @@
                                "name": "Beresteiska",
                                "lat": 50.459260,
                                "lon": 30.418991,
-                               "timePrev": 1.4,
-                               "timeNext": 2.5
+                               "timePrev": 2,
+                               "timeNext": 3
                                },
                                
                                {
@@ -368,8 +368,8 @@
                                "name": "Shuliavska",
                                "lat": 50.454494,
                                "lon": 30.447240,
-                               "timePrev": 2.5,
-                               "timeNext": 1.4
+                               "timePrev": 3,
+                               "timeNext": 2
                                },
                                
                                {
@@ -377,8 +377,8 @@
                                "name": "Politekhnichnyi instytut",
                                "lat": 50.450945,
                                "lon": 30.465152,
-                               "timePrev": 1.4,
-                               "timeNext": 2.0
+                               "timePrev": 2,
+                               "timeNext": 2
                                },
                                
                                {
@@ -386,8 +386,8 @@
                                "name": "Vokzalna",
                                "lat": 50.441390,
                                "lon": 30.489050,
-                               "timePrev": 2.0,
-                               "timeNext": 1.4
+                               "timePrev": 2,
+                               "timeNext": 2
                                },
                                
                                {
@@ -395,8 +395,8 @@
                                "name": "University",
                                "lat": 50.44291,
                                "lon": 30.503705,
-                               "timePrev": 1.4,
-                               "timeNext": 1.5
+                               "timePrev": 2,
+                               "timeNext": 2
                                },
                                
                                {
@@ -404,8 +404,8 @@
                                "name": "Teatralna",
                                "lat": 50.444850,
                                "lon": 30.516071,
-                               "timePrev": 1.5,
-                               "timeNext": 1.3
+                               "timePrev": 2,
+                               "timeNext": 2
                                },
                                
                                {
@@ -413,8 +413,8 @@
                                "name": "Khreshchatyk",
                                "lat": 50.447060,
                                "lon": 30.525351,
-                               "timePrev": 1.3,
-                               "timeNext": 2.0
+                               "timePrev": 2,
+                               "timeNext": 2
                                },
                                
                                {
@@ -422,8 +422,8 @@
                                "name": "Arsenalna",
                                "lat": 50.443015,
                                "lon": 30.547737,
-                               "timePrev": 2.0,
-                               "timeNext": 1.4
+                               "timePrev": 2,
+                               "timeNext": 2
                                },
                                
                                {
@@ -431,8 +431,8 @@
                                "name": "Dnipro",
                                "lat": 50.441226,
                                "lon": 30.559350,
-                               "timePrev": 1.4,
-                               "timeNext": 2.2
+                               "timePrev": 2,
+                               "timeNext": 2
                                },
                                
                                {
@@ -440,8 +440,8 @@
                                "name": "Hidropark",
                                "lat": 50.445943,
                                "lon": 30.576887,
-                               "timePrev": 2.2,
-                               "timeNext": 2.2
+                               "timePrev": 2,
+                               "timeNext": 2
                                },
                                
                                {
@@ -449,8 +449,8 @@
                                "name": "Livoberezhna",
                                "lat": 50.451878,
                                "lon": 30.598162,
-                               "timePrev": 2.2,
-                               "timeNext": 1.5
+                               "timePrev": 2,
+                               "timeNext": 2
                                },
                                
                                
@@ -459,8 +459,8 @@
                                "name": "Darnytsia",
                                "lat": 50.455741,
                                "lon": 30.611905,
-                               "timePrev": 1.5,
-                               "timeNext": 2.0
+                               "timePrev": 2,
+                               "timeNext": 2
                                },
                                
                                {
@@ -468,8 +468,8 @@
                                "name": "Chernihivska",
                                "lat": 50.459912,
                                "lon": 30.630387,
-                               "timePrev": 2.0,
-                               "timeNext": 2.0
+                               "timePrev": 2,
+                               "timeNext": 2
                                },
                                
                                {
@@ -477,8 +477,8 @@
                                "name": "Lisova",
                                "lat": 50.464777,
                                "lon": 30.645612,
-                               "timePrev": 2.0,
-                               "timeNext": -1.0
+                               "timePrev": 2,
+                               "timeNext": -1
                                }
                                ]
                   }

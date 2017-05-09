@@ -12,9 +12,8 @@ import UIKit
 class DataManager {
     
     private var ways: [Way] = []
-    private var timeForWay: Double = 0.0
-    private var wayText: String = ""
-    private var copyWays: [Way] = []
+    private var timeForWay: Int = 0
+
     
     private init() {}
     static let instance = DataManager()
@@ -22,13 +21,9 @@ class DataManager {
     func getWays () -> [Way] {
         return ways
     }
-    
-   // func getNewWay () -> [Way] {
-      //  return newWay
-    //}
-    
-    func getWayText () -> String {
-        return wayText
+
+    func getTime() -> Int {
+        return timeForWay
     }
     
     func readInfoFromJson () {
@@ -58,8 +53,8 @@ class DataManager {
                                 let lat = station["lat"] as! Double
                                 let lon = station["lon"] as! Double
                                 let statName = station["name"] as! String
-                                let timeNext = turnIntoSeconds(time:  station["timeNext"] as! Double)
-                                let timePrev = turnIntoSeconds(time: station["timePrev"] as! Double)
+                                let timeNext = station["timeNext"] as! Int
+                                let timePrev = station["timePrev"] as! Int
                                 let id = station["id"] as! Int
                                
                                 let stat = Station(stationName: statName, stationId: id, x: lat, y: lon, timeN: timeNext, timeP: timePrev)
@@ -76,12 +71,6 @@ class DataManager {
         
     }
     
-    func turnIntoSeconds (time: Double) -> Double {
-        let fisrtPartOfTime = Int(time)
-        let secondPartOfTime = time - Double(fisrtPartOfTime)
-        let finalTime = Double(fisrtPartOfTime*60) + secondPartOfTime*100
-        return finalTime
-    }
     
     func initWays () {
         
@@ -135,7 +124,6 @@ class DataManager {
                 newWay.append(Way(myStations: findPathInOneWay(fromStation: fromSt, toStation: toSt, myWay: way), myName: "", myColor: color))
             }
             
-            wayText.append("You don't need to change the train. ")
             
         } else {
             
@@ -151,8 +139,6 @@ class DataManager {
 
                         newWay.append(Way(myStations: findPathInOneWay(fromStation: fromStation!, toStation: station1, myWay: wayFr), myName: "", myColor: color1))
                         
-                        wayText.append("You need to go to \(station2.name) station to change line to the \(wayT.name). ")
-                        
                         newWay.append(Way(myStations: findPathInOneWay(fromStation: station2, toStation: toStation!, myWay: wayT), myName: "", myColor: color2))
                         
                         
@@ -164,21 +150,8 @@ class DataManager {
         }
         
 
-    
-        wayText.append("It will take near ")
-        
-        let duration: TimeInterval = timeForWay
-        let formatter = DateComponentsFormatter()
-        formatter.unitsStyle = .positional
-        formatter.allowedUnits = [ .minute, .second ]
-        formatter.zeroFormattingBehavior = [ .pad ]
-         
-        let formattedDuration = formatter.string(from: duration)
-         
-        wayText.append(formattedDuration!)
-        wayText.append(".")
-        
 
+        
 
         
         return newWay
@@ -215,22 +188,14 @@ class DataManager {
             }
         }
         
-        if way.count > 1 {
-            
 
-          
-        }
-        
-
-        
         return way
     }
 
     
     func destroyWay() {
      
-        timeForWay =  0.0
-        wayText = ""
+        timeForWay =  0
     }
 
 }
